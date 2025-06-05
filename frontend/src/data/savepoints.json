@@ -1,0 +1,141 @@
+{
+  "savepoints": [
+    {
+      "id": "sp-001",
+      "name": "初始工作流设计",
+      "description": "完成基础工作流节点和连接的设计",
+      "timestamp": "2025-06-01T14:30:00Z",
+      "workflowType": "automation-test",
+      "nodes": [
+        "integration-test",
+        "e2e-test",
+        "visual-test"
+      ],
+      "status": "stable"
+    },
+    {
+      "id": "sp-002",
+      "name": "集成测试完成",
+      "description": "完成集成测试节点的实现和测试",
+      "timestamp": "2025-06-01T16:45:00Z",
+      "workflowType": "automation-test",
+      "nodes": [
+        "integration-test"
+      ],
+      "status": "stable"
+    },
+    {
+      "id": "sp-003",
+      "name": "端到端测试完成",
+      "description": "完成端到端测试节点的实现和测试",
+      "timestamp": "2025-06-01T18:20:00Z",
+      "workflowType": "automation-test",
+      "nodes": [
+        "integration-test",
+        "e2e-test"
+      ],
+      "status": "stable"
+    },
+    {
+      "id": "sp-004",
+      "name": "视觉测试部分完成",
+      "description": "视觉测试节点实现，但存在错误",
+      "timestamp": "2025-06-02T09:15:00Z",
+      "workflowType": "automation-test",
+      "nodes": [
+        "integration-test",
+        "e2e-test",
+        "visual-test"
+      ],
+      "status": "unstable"
+    },
+    {
+      "id": "sp-005",
+      "name": "智能体设计初始化",
+      "description": "完成智能体设计工作流的基础结构",
+      "timestamp": "2025-06-01T15:10:00Z",
+      "workflowType": "agent-design",
+      "nodes": [
+        "general-agent",
+        "mcp-coordinator"
+      ],
+      "status": "stable"
+    },
+    {
+      "id": "sp-006",
+      "name": "MCP规划器集成",
+      "description": "集成MCP规划器到智能体设计工作流",
+      "timestamp": "2025-06-01T17:30:00Z",
+      "workflowType": "agent-design",
+      "nodes": [
+        "general-agent",
+        "mcp-coordinator",
+        "mcp-planner"
+      ],
+      "status": "stable"
+    },
+    {
+      "id": "sp-007",
+      "name": "思维记录器集成",
+      "description": "集成思维行为记录器到智能体设计工作流",
+      "timestamp": "2025-06-01T19:45:00Z",
+      "workflowType": "agent-design",
+      "nodes": [
+        "general-agent",
+        "mcp-coordinator",
+        "mcp-planner",
+        "thought-recorder"
+      ],
+      "status": "stable"
+    },
+    {
+      "id": "sp-008",
+      "name": "发布管理器集成",
+      "description": "集成发布管理器到智能体设计工作流，但存在权限问题",
+      "timestamp": "2025-06-02T08:20:00Z",
+      "workflowType": "agent-design",
+      "nodes": [
+        "general-agent",
+        "mcp-coordinator",
+        "mcp-planner",
+        "thought-recorder",
+        "release-manager"
+      ],
+      "status": "unstable"
+    },
+    {
+      "id": "sp-009",
+      "name": "SuperMemory集成",
+      "description": "集成SuperMemory到智能体设计工作流",
+      "timestamp": "2025-06-02T10:05:00Z",
+      "workflowType": "agent-design",
+      "nodes": [
+        "general-agent",
+        "mcp-coordinator",
+        "mcp-planner",
+        "thought-recorder",
+        "release-manager",
+        "supermemory"
+      ],
+      "status": "stable"
+    },
+    {
+      "id": "sp-010",
+      "name": "完整工作流",
+      "description": "完成所有节点的集成，但部分节点处于待定状态",
+      "timestamp": "2025-06-02T10:30:00Z",
+      "workflowType": "agent-design",
+      "nodes": [
+        "general-agent",
+        "mcp-coordinator",
+        "mcp-planner",
+        "thought-recorder",
+        "release-manager",
+        "supermemory",
+        "problem-solver",
+        "manus-im"
+      ],
+      "status": "unstable"
+    }
+  ]
+}

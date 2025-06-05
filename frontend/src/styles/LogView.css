@@ -1,0 +1,186 @@
+.log-view {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.log-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.log-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+}
+
+.log-section-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* 记忆状态卡片样式 */
+.memory-status-card {
+  background-color: #f0f8ff;
+  border: 1px solid #d0e6ff;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.memory-status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d0e6ff;
+}
+
+.memory-status-title {
+  font-weight: 500;
+  color: #333;
+  font-size: 16px;
+}
+
+.memory-status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.memory-status-badge.success {
+  background-color: #e6f7e6;
+  color: #28a745;
+}
+
+.memory-status-content {
+  margin-bottom: 12px;
+}
+
+.memory-status-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.status-label {
+  font-weight: 500;
+  color: #666;
+  width: 100px;
+}
+
+.status-value {
+  color: #333;
+}
+
+.status-badge {
+  margin-left: auto;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background-color: #e3f2fd;
+  color: #2196F3;
+}
+
+.memory-link {
+  display: block;
+  text-align: right;
+  color: #2196F3;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.memory-link:hover {
+  text-decoration: underline;
+}
+
+/* 系统日志样式 */
+.log-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.log-entry {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  font-size: 13px;
+}
+
+.log-timestamp {
+  color: #666;
+  margin-right: 10px;
+  font-family: monospace;
+}
+
+.log-level {
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.log-level.info {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.log-level.warning {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.log-level.error {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.log-level.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.log-message {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .log-view {
+    padding: 15px;
+  }
+  
+  .memory-status-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .status-label {
+    width: auto;
+    margin-bottom: 4px;
+  }
+  
+  .status-badge {
+    margin-left: 0;
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,353 @@
+.workflow-integration-panel {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 20px 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.workflow-tabs {
+  display: flex;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-button {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  transition: all 0.3s;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tab-button:hover {
+  background-color: #eeeeee;
+  color: #333;
+}
+
+.tab-button.active {
+  background-color: #ffffff;
+  color: #2196F3;
+  font-weight: bold;
+  box-shadow: inset 0 -2px 0 #2196F3;
+}
+
+.workflow-content {
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Timeline styles */
+.workflow-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 40px;
+  top: 25px;
+  bottom: -15px;
+  width: 2px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-time {
+  min-width: 80px;
+  text-align: right;
+  font-size: 12px;
+  color: #888;
+  padding-top: 3px;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.timeline-type {
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background-color: #e0e0e0;
+  color: #666;
+}
+
+.timeline-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.timeline-description {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Timeline item status colors */
+.timeline-item.success .timeline-type {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.timeline-item.running .timeline-type {
+  background-color: #fff8e1;
+  color: #f57c00;
+}
+
+.timeline-item.error .timeline-type {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* Savepoints styles */
+.workflow-savepoints {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.savepoint-item {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.savepoint-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.savepoint-id {
+  font-weight: bold;
+  color: #2196F3;
+}
+
+.savepoint-time {
+  font-size: 12px;
+  color: #888;
+}
+
+.savepoint-description {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.savepoint-hash {
+  font-family: monospace;
+  font-size: 12px;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.savepoint-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.savepoint-button {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.3s;
+}
+
+.savepoint-button:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+/* History styles */
+.workflow-history {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.history-item {
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.history-item.success {
+  background-color: #f1f8e9;
+  border-left: 3px solid #4CAF50;
+}
+
+.history-item.failed {
+  background-color: #ffebee;
+  border-left: 3px solid #F44336;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.history-id {
+  font-weight: bold;
+  color: #555;
+}
+
+.history-time {
+  font-size: 12px;
+  color: #888;
+}
+
+.history-savepoint, .history-reason, .history-user {
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #666;
+}
+
+.history-error {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #ffebee;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #c62828;
+}
+
+/* Status bar */
+.workflow-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+  background-color: #e3f2fd;
+  border-top: 1px solid #bbdefb;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-indicator.running {
+  background-color: #2196F3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 5px rgba(33, 150, 243, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+  }
+}
+
+.status-text {
+  font-weight: bold;
+  color: #1976D2;
+}
+
+.status-time {
+  margin-left: auto;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Loading and error states */
+.workflow-integration-loading, .workflow-integration-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 16px;
+  color: #666;
+}
+
+.workflow-integration-error {
+  color: #F44336;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .workflow-tabs {
+    overflow-x: auto;
+  }
+  
+  .tab-button {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+  
+  .workflow-content {
+    padding: 15px;
+  }
+  
+  .workflow-status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px 15px;
+  }
+  
+  .status-time {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .workflow-content {
+    padding: 10px;
+  }
+  
+  .timeline-time {
+    min-width: 60px;
+    font-size: 11px;
+  }
+}

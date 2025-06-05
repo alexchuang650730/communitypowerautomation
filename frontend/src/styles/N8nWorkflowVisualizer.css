@@ -1,0 +1,149 @@
+.n8n-workflow-visualizer {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.connections-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nodes-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.connection-label {
+  font-size: 12px;
+  fill: #666;
+  font-weight: 500;
+  background-color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.workflow-connection path {
+  transition: all 0.3s ease;
+  stroke-dasharray: 0;
+  animation: flowLine 1.5s infinite linear;
+}
+
+.workflow-connection path:hover {
+  stroke: #2196F3;
+  stroke-width: 3;
+}
+
+.connection-dot {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+.connection-dot:hover {
+  fill: #2196F3;
+  r: 6;
+}
+
+/* 节点连接点样式 */
+.node-port {
+  fill: #fff;
+  stroke: #ccc;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.node-port:hover {
+  fill: #e0e0e0;
+  stroke: #2196F3;
+}
+
+.node-port.input {
+  fill: #f0f0f0;
+}
+
+.node-port.output {
+  fill: #f0f0f0;
+}
+
+/* 添加流动动画 */
+@keyframes flowLine {
+  0% {
+    stroke-dasharray: 5 15;
+    stroke-dashoffset: 20;
+  }
+  100% {
+    stroke-dasharray: 5 15;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 工作流状态指示器 */
+.workflow-status {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.status-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-line {
+  height: 2px;
+  flex-grow: 1;
+  margin: 7px 8px;
+  background-color: #ddd;
+}
+
+.status-dot.blue {
+  background-color: #2196F3;
+}
+
+.status-dot.green {
+  background-color: #4CAF50;
+}
+
+.status-dot.gray {
+  background-color: #ccc;
+}
+
+.status-dot.red {
+  background-color: #F44336;
+}
+
+/* 添加节点阴影和悬停效果 */
+.workflow-node {
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.workflow-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.workflow-node.selected {
+  box-shadow: 0 0 0 2px #2196F3, 0 4px 12px rgba(33, 150, 243, 0.3);
+}

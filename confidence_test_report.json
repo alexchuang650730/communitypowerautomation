@@ -1,0 +1,682 @@
+{
+  "test_summary": {
+    "total_tests": 84,
+    "successful_tests": 77,
+    "failed_tests": 7,
+    "average_response_time": 0.1979818253290086
+  },
+  "test_results": [
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "functionality_basic_initialization",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "functionality_method_availability",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "functionality_parameter_validation",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "functionality_output_format_check",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_0",
+      "success": true,
+      "response_time": 1.430511474609375e-06,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_1",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_2",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_3",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_4",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_5",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_6",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_7",
+      "success": true,
+      "response_time": 1.430511474609375e-06,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_8",
+      "success": true,
+      "response_time": 7.152557373046875e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "stability_test_9",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:44"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "performance_small_request",
+      "success": true,
+      "response_time": 0.6414234638214111,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:45"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "performance_medium_request",
+      "success": true,
+      "response_time": 0.47485971450805664,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "performance_large_request",
+      "success": true,
+      "response_time": 0.2869734764099121,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "error_handling_invalid_input",
+      "success": false,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "error_handling_network_timeout",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "error_handling_service_unavailable",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "webagent_adapter",
+      "test_case": "error_handling_malformed_response",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "functionality_basic_initialization",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "functionality_method_availability",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "functionality_parameter_validation",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "functionality_output_format_check",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_0",
+      "success": true,
+      "response_time": 1.430511474609375e-06,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_1",
+      "success": true,
+      "response_time": 7.152557373046875e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_2",
+      "success": false,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_3",
+      "success": true,
+      "response_time": 7.152557373046875e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_4",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_5",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_6",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_7",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_8",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "stability_test_9",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:46"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "performance_small_request",
+      "success": true,
+      "response_time": 0.9951398372650146,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:47"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "performance_medium_request",
+      "success": true,
+      "response_time": 0.6350352764129639,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:47"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "performance_large_request",
+      "success": true,
+      "response_time": 1.7782647609710693,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "error_handling_invalid_input",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "error_handling_network_timeout",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "error_handling_service_unavailable",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "claude_adapter",
+      "test_case": "error_handling_malformed_response",
+      "success": false,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "functionality_basic_initialization",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "functionality_method_availability",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "functionality_parameter_validation",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "functionality_output_format_check",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_0",
+      "success": false,
+      "response_time": 1.1920928955078125e-06,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_1",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_2",
+      "success": false,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_3",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_4",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_5",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_6",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_7",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_8",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "stability_test_9",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:49"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "performance_small_request",
+      "success": true,
+      "response_time": 1.616093635559082,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:51"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "performance_medium_request",
+      "success": true,
+      "response_time": 1.557748556137085,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:52"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "performance_large_request",
+      "success": true,
+      "response_time": 1.8882298469543457,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "error_handling_invalid_input",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "error_handling_network_timeout",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "error_handling_service_unavailable",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "gemini_adapter",
+      "test_case": "error_handling_malformed_response",
+      "success": false,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "functionality_basic_initialization",
+      "success": false,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "functionality_method_availability",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "functionality_parameter_validation",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "functionality_output_format_check",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_0",
+      "success": true,
+      "response_time": 1.1920928955078125e-06,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_1",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_2",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_3",
+      "success": true,
+      "response_time": 7.152557373046875e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_4",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_5",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_6",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_7",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_8",
+      "success": true,
+      "response_time": 4.76837158203125e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "stability_test_9",
+      "success": true,
+      "response_time": 2.384185791015625e-07,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:54"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "performance_small_request",
+      "success": true,
+      "response_time": 1.1103041172027588,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:55"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "performance_medium_request",
+      "success": true,
+      "response_time": 1.2449853420257568,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:57"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "performance_large_request",
+      "success": true,
+      "response_time": 1.2013943195343018,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:58"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "error_handling_invalid_input",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:58"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "error_handling_network_timeout",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:58"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "error_handling_service_unavailable",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:58"
+    },
+    {
+      "adapter_name": "sequential_thinking_adapter",
+      "test_case": "error_handling_malformed_response",
+      "success": true,
+      "response_time": 0.1,
+      "error_message": null,
+      "timestamp": "2025-06-05 11:48:58"
+    }
+  ]
+}

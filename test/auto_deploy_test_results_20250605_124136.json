@@ -1,0 +1,296 @@
+{
+  "start_time": "2025-06-05T12:41:28.836240",
+  "test_cases": {
+    "visual_ui_test": {
+      "test_id": "visual_ui_test",
+      "name": "CLI本地ReAct模型視覺自動化UI測試",
+      "description": "使用Qwen3 8B進行CLI視覺自動化測試",
+      "start_time": "2025-06-05T12:41:29.063017",
+      "success": true,
+      "tools_status": {
+        "qwen3_8b_react_mcp": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        },
+        "visual_automation_cli": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        }
+      },
+      "repair_actions": [
+        {
+          "tool_name": "qwen3_8b_react_mcp",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "tool_name": "visual_automation_cli",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "original_tool": "qwen3_8b_react_mcp",
+          "action": "no_alternative_found",
+          "success": false
+        },
+        {
+          "original_tool": "visual_automation_cli",
+          "action": "no_alternative_found",
+          "success": false
+        }
+      ],
+      "test_output": {
+        "success": true,
+        "test_type": "visual_ui_automation",
+        "model": "qwen3_8b",
+        "output": "🧪 測試Qwen3 ReAct適配器...\n❌ 初始化失敗\n",
+        "details": "CLI視覺自動化測試通過"
+      },
+      "end_time": "2025-06-05T12:41:29.939400"
+    },
+    "thought_action_recorder": {
+      "test_id": "thought_action_recorder",
+      "name": "CLI mcpbrainstorm創建ThoughtActionRecorder",
+      "description": "通過CLI創建和測試ThoughtActionRecorder適配器",
+      "start_time": "2025-06-05T12:41:29.939425",
+      "success": false,
+      "tools_status": {
+        "enhanced_mcp_brainstorm": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        },
+        "thought_action_recorder_mcp": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        }
+      },
+      "repair_actions": [
+        {
+          "tool_name": "enhanced_mcp_brainstorm",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "tool_name": "thought_action_recorder_mcp",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "original_tool": "enhanced_mcp_brainstorm",
+          "action": "no_alternative_found",
+          "success": false
+        },
+        {
+          "original_tool": "thought_action_recorder_mcp",
+          "action": "no_alternative_found",
+          "success": false
+        }
+      ],
+      "test_output": {
+        "success": false,
+        "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n",
+        "details": "ThoughtActionRecorder創建失敗"
+      },
+      "end_time": "2025-06-05T12:41:30.304997"
+    },
+    "history_rollback_memory": {
+      "test_id": "history_rollback_memory",
+      "name": "CLI歷史回滾無限制記憶測試",
+      "description": "測試歷史回滾的完整數據保存和恢復",
+      "start_time": "2025-06-05T12:41:30.305172",
+      "success": false,
+      "tools_status": {
+        "release_manager": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        },
+        "rollback_cli": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        }
+      },
+      "repair_actions": [
+        {
+          "tool_name": "release_manager",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "tool_name": "rollback_cli",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "original_tool": "release_manager",
+          "action": "no_alternative_found",
+          "success": false
+        },
+        {
+          "original_tool": "rollback_cli",
+          "action": "no_alternative_found",
+          "success": false
+        }
+      ],
+      "test_output": {
+        "success": false,
+        "savepoint_id": "default_savepoint",
+        "rag_export": "開始會話結果: {\n  \"success\": true,\n  \"tool\": \"start_session\",\n  \"result\": {\n    \"session_id\": \"d85a04da-5a07-4074-a354-300d5b682fcd\",\n    \"agent_type\": \"manus\",\n    \"context\": {\n      \"user_id\": \"test_user\",\n      \"task\": \"test_interaction\"\n    },\n    \"started_at\": \"2025-06-05T12:41:30.757005\"\n  },\n  \"timestamp\": \"2025-06-05T12:41:30.757007\"\n}\n工具信息: {\n  \"name\": \"ThoughtActionRecorderMCP\",\n  \"description\": \"思維行動記錄MCP適配器，支持用戶與Manus交互記錄、RAG學習和RL-SRT對齊\",\n  \"version\": \"1.0.0\",\n  \"capabilities\": [\n    \"session_management\",\n    \"thought_recording\",\n    \"action_recording\",\n    \"interaction_tracking\",\n    \"workflow_analysis\",\n    \"pattern_recognition\",\n    \"rag_data_generation\",\n    \"rl_srt_data_generation\",\n    \"learning_data_export\",\n    \"performance_analytics\"\n  ],\n  \"tools\": [\n    \"start_session\",\n    \"record_thought\",\n    \"record_action\",\n    \"record_user_input\",\n    \"record_agent_response\",\n    \"record_workflow_step\",\n    \"end_session\",\n    \"get_session_summary\",\n    \"analyze_patterns\",\n    \"generate_rag_data\",\n    \"generate_rl_srt_data\",\n    \"export_learning_data\"\n  ],\n  \"is_available\": true,\n  \"metrics\": {\n    \"total_sessions\": 1,\n    \"total_interactions\": 0,\n    \"active_sessions\": 1,\n    \"rag_data_generated\": 0,\n    \"rl_srt_data_generated\": 0,\n    \"learning_exports\": 0\n  },\n  \"created_at\": \"2025-06-05T12:41:30.757068\"\n}\n",
+        "rollback_output": "❌ 保存點不存在: default_savepoint\n",
+        "details": "歷史回滾和記憶測試完成"
+      },
+      "end_time": "2025-06-05T12:41:30.864981"
+    },
+    "replay_rl_srt_training": {
+      "test_id": "replay_rl_srt_training",
+      "name": "CLI Replay工作流RL-SRT訓練測試",
+      "description": "使用replay數據進行RL-SRT訓練和優化",
+      "start_time": "2025-06-05T12:41:30.865140",
+      "success": true,
+      "tools_status": {
+        "rl_srt_mcp": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        },
+        "thought_action_recorder_mcp": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        }
+      },
+      "repair_actions": [
+        {
+          "tool_name": "rl_srt_mcp",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "tool_name": "thought_action_recorder_mcp",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "original_tool": "rl_srt_mcp",
+          "action": "no_alternative_found",
+          "success": false
+        },
+        {
+          "original_tool": "thought_action_recorder_mcp",
+          "action": "no_alternative_found",
+          "success": false
+        }
+      ],
+      "test_output": {
+        "success": true,
+        "replay_data": "開始會話結果: {\n  \"success\": true,\n  \"tool\": \"start_session\",\n  \"result\": {\n    \"session_id\": \"c7793dd7-720d-4ee7-aa32-c88450a8de5d\",\n    \"agent_type\": \"manus\",\n    \"context\": {\n      \"user_id\": \"test_user\",\n      \"task\": \"test_interaction\"\n    },\n    \"started_at\": \"2025-06-05T12:41:31.333060\"\n  },\n  \"timestamp\": \"2025-06-05T12:41:31.333064\"\n}\n工具信息: {\n  \"name\": \"ThoughtActionRecorderMCP\",\n  \"description\": \"思維行動記錄MCP適配器，支持用戶與Manus交互記錄、RAG學習和RL-SRT對齊\",\n  \"version\": \"1.0.0\",\n  \"capabilities\": [\n    \"session_management\",\n    \"thought_recording\",\n    \"action_recording\",\n    \"interaction_tracking\",\n    \"workflow_analysis\",\n    \"pattern_recognition\",\n    \"rag_data_generation\",\n    \"rl_srt_data_generation\",\n    \"learning_data_export\",\n    \"performance_analytics\"\n  ],\n  \"tools\": [\n    \"start_session\",\n    \"record_thought\",\n    \"record_action\",\n    \"record_user_input\",\n    \"record_agent_response\",\n    \"record_workflow_step\",\n    \"end_session\",\n    \"get_session_summary\",\n    \"analyze_patterns\",\n    \"generate_rag_data\",\n    \"generate_rl_srt_data\",\n    \"export_learning_data\"\n  ],\n  \"is_available\": true,\n  \"metrics\": {\n    \"total_sessions\": 1,\n    \"total_interactions\": 0,\n    \"active_sessions\": 1,\n    \"rag_data_generated\": 0,\n    \"rl_srt_data_generated\": 0,\n    \"learning_exports\": 0\n  },\n  \"created_at\": \"2025-06-05T12:41:31.333134\"\n}\n",
+        "training_output": "訓練結果: {\n  \"status\": \"success\",\n  \"data\": {\n    \"training_results\": {\n      \"episodes_completed\": 5,\n      \"total_reward\": 3.9211846209361747,\n      \"average_reward\": 0.7842369241872349,\n      \"improvement_rate\": 0.1\n    },\n    \"rl_factory_status\": true,\n    \"srt_status\": true\n  },\n  \"timestamp\": \"2025-06-05T12:41:33.107383\"\n}\n適配器能力: {\n  \"status\": \"success\",\n  \"data\": {\n    \"capabilities\": [\n      \"reinforcement_learning\",\n      \"self_reward_training\",\n      \"mcp_alignment\",\n      \"thought_action_recording\",\n      \"performance_evaluation\",\n      \"continuous_learning\",\n      \"reward_model_updating\",\n      \"self_reward_generation\"\n    ],\n    \"version\": \"2.0.0\",\n    \"components\": {\n      \"rl_factory\": true,\n      \"srt\": true,\n      \"alignment\": true\n    }\n  }\n}\n",
+        "comparison_result": "訓練結果: {\n  \"status\": \"success\",\n  \"data\": {\n    \"training_results\": {\n      \"episodes_completed\": 5,\n      \"total_reward\": 3.564508425553231,\n      \"average_reward\": 0.7129016851106462,\n      \"improvement_rate\": 0.1\n    },\n    \"rl_factory_status\": true,\n    \"srt_status\": true\n  },\n  \"timestamp\": \"2025-06-05T12:41:35.196199\"\n}\n適配器能力: {\n  \"status\": \"success\",\n  \"data\": {\n    \"capabilities\": [\n      \"reinforcement_learning\",\n      \"self_reward_training\",\n      \"mcp_alignment\",\n      \"thought_action_recording\",\n      \"performance_evaluation\",\n      \"continuous_learning\",\n      \"reward_model_updating\",\n      \"self_reward_generation\"\n    ],\n    \"version\": \"2.0.0\",\n    \"components\": {\n      \"rl_factory\": true,\n      \"srt\": true,\n      \"alignment\": true\n    }\n  }\n}\n",
+        "details": "Replay工作流RL-SRT訓練和比較完成"
+      },
+      "end_time": "2025-06-05T12:41:35.597205"
+    },
+    "supermemory_rag_conversation": {
+      "test_id": "supermemory_rag_conversation",
+      "name": "CLI KiloCode RAG + SuperMemory適配器功能測試",
+      "description": "測試現有的KiloCode RAG功能和SuperMemory適配器的組合使用",
+      "start_time": "2025-06-05T12:41:35.597228",
+      "success": false,
+      "tools_status": {
+        "kilocode_mcp": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        },
+        "supermemory_mcp": {
+          "available": false,
+          "output": "",
+          "error": "usage: unified_adapter_cli.py [-h] {list,exec,search,status,test} ...\nunified_adapter_cli.py: error: argument command: invalid choice: 'check' (choose from 'list', 'exec', 'search', 'status', 'test')\n"
+        }
+      },
+      "repair_actions": [
+        {
+          "tool_name": "kilocode_mcp",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "tool_name": "supermemory_mcp",
+          "action": "create_with_mcpbrainstorm",
+          "success": false,
+          "output": "",
+          "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/ubuntu/projects/communitypowerautomation/mcptool/adapters/enhanced_mcp_brainstorm.py\", line 11, in <module>\n    from agents.ppt_agent.core.mcp.mcp_brainstorm import MCPCentralCoordinator\nModuleNotFoundError: No module named 'agents'\n"
+        },
+        {
+          "original_tool": "kilocode_mcp",
+          "action": "no_alternative_found",
+          "success": false
+        },
+        {
+          "original_tool": "supermemory_mcp",
+          "action": "no_alternative_found",
+          "success": false
+        }
+      ],
+      "test_output": "",
+      "error": "'Qwen3AutoDeployTestMCP' object has no attribute '_test_kilocode_rag_supermemory'",
+      "end_time": "2025-06-05T12:41:36.021710"
+    }
+  },
+  "summary": {
+    "total_tests": 5,
+    "successful_tests": 2,
+    "failed_tests": 3,
+    "success_rate": 40.0,
+    "overall_success": false
+  },
+  "failed_tools": [
+    "qwen3_8b_react_mcp",
+    "visual_automation_cli",
+    "qwen3_8b_react_mcp",
+    "visual_automation_cli",
+    "enhanced_mcp_brainstorm",
+    "thought_action_recorder_mcp",
+    "enhanced_mcp_brainstorm",
+    "thought_action_recorder_mcp",
+    "release_manager",
+    "rollback_cli",
+    "release_manager",
+    "rollback_cli",
+    "rl_srt_mcp",
+    "thought_action_recorder_mcp",
+    "rl_srt_mcp",
+    "thought_action_recorder_mcp",
+    "kilocode_mcp",
+    "supermemory_mcp",
+    "kilocode_mcp",
+    "supermemory_mcp"
+  ],
+  "created_tools": [],
+  "updated_tools": [],
+  "end_time": "2025-06-05T12:41:36.021763",
+  "duration": 7.185527
+}

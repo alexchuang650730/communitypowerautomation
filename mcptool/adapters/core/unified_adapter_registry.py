@@ -115,18 +115,26 @@ class UnifiedAdapterRegistry:
             logger.debug(f"模塊導入失敗 {module_path}: {e}")
     
     def _is_mcp_adapter_class(self, cls: Type, module) -> bool:
-        """判斷是否為MCP適配器類"""
+        """判斷是否為MCP適配器類 - 改進版本，更好地識別MCP類"""
         # 檢查是否在當前模塊中定義
         if cls.__module__ != module.__name__:
             return False
         
-        # 檢查是否有process方法
-        if not hasattr(cls, 'process'):
-            return False
+        # 直接檢查類名是否包含MCP
+        if 'mcp' in cls.__name__.lower():
+            return True
         
+        # 檢查是否有process方法
+        if hasattr(cls, 'process'):
+            return True
+        
+        # 檢查是否有get_capabilities方法
+        if hasattr(cls, 'get_capabilities'):
+            return True
+            
         # 檢查類名模式
         class_name = cls.__name__.lower()
-        mcp_patterns = ['mcp', 'adapter', 'engine', 'core', 'manager']
+        mcp_patterns = ['adapter', 'engine', 'core', 'manager']
         
         return any(pattern in class_name for pattern in mcp_patterns)
     

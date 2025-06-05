@@ -15,20 +15,28 @@ import readline
 import cmd
 
 # 添加項目路徑
-sys.path.append(str(Path(__file__).parent.parent))
+current_dir = Path(__file__).parent
+project_root = current_dir.parent.parent
+sys.path.append(str(project_root))
 
-from adapters.core.unified_adapter_registry import get_global_registry
+# 導入適配器註冊表
+from mcptool.adapters.core.unified_adapter_registry import get_global_registry
+
+# 導入mcp_core_cli
+sys.path.append(str(current_dir))
+from mcp_core_cli import MCPCoreCLI
 
 # 配置日誌
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 class UnifiedMCPCLI(cmd.Cmd):
-    """統一MCP CLI交互式界面"""
+    """統一MCP CLI交互式界面 - 集成mcp_core_cli功能"""
     
     intro = '''
-🚀 PowerAutomation 統一MCP控制系統
-=================================
+🚀 PowerAutomation 統一MCP控制系統 v2.0
+=====================================
+✨ 新增功能: 集成MCP核心CLI支持
 輸入 'help' 查看可用命令
 輸入 'quit' 或 'exit' 退出系統
 '''
@@ -38,6 +46,7 @@ class UnifiedMCPCLI(cmd.Cmd):
         super().__init__()
         self.registry = get_global_registry()
         self.current_adapter = None
+        self.core_cli = MCPCoreCLI()  # 集成核心CLI
         
     def do_list(self, args):
         """列出適配器
@@ -328,6 +337,249 @@ class UnifiedMCPCLI(cmd.Cmd):
         else:
             print(f"❌ 未知配置命令: {command}")
     
+    def do_core(self, args):
+        """執行核心CLI命令
+        用法: core <command> [args]
+        例子: core list
+        例子: core info thoughtactionrecordermcp
+        例子: core registry --stats
+        """
+        if not args.strip():
+            print("❌ 用法: core <command> [args]")
+            print("可用命令: list, info, exec, registry, config, tools, recorder, discovery")
+            return
+        
+        try:
+            # 將命令傳遞給核心CLI
+            result = self.core_cli.run(args.split())
+            if result != 0:
+                print("❌ 核心CLI命令執行失敗")
+        except Exception as e:
+            print(f"❌ 執行核心CLI命令失敗: {e}")
+    
+    def do_claude(self, args):
+        """Claude適配器專用命令
+        用法: claude generate <prompt> [language]
+        用法: claude optimize <code> [language] [type]
+        用法: claude complete <text>
+        """
+        if not args.strip():
+            print("❌ 用法: claude <generate|optimize|complete> [args]")
+            return
+        
+        parts = args.strip().split(maxsplit=1)
+        action = parts[0]
+        
+        if action == "generate":
+            if len(parts) < 2:
+                print("❌ 用法: claude generate <prompt> [language]")
+                return
+            
+            prompt_parts = parts[1].split()
+            prompt = " ".join(prompt_parts[:-1]) if len(prompt_parts) > 1 else parts[1]
+            language = prompt_parts[-1] if len(prompt_parts) > 1 and prompt_parts[-1] in ["python", "javascript", "java", "cpp", "go"] else "python"
+            
+            data = {
+                "action": "generate_code",
+                "prompt": prompt,
+                "language": language
+            }
+            
+            self.do_exec(f"claudemcp {json.dumps(data)}")
+            
+        elif action == "optimize":
+            print("❌ Claude optimize命令需要更多參數實現")
+            
+        elif action == "complete":
+            if len(parts) < 2:
+                print("❌ 用法: claude complete <text>")
+                return
+            
+            data = {
+                "action": "complete_text",
+                "prompt": parts[1]
+            }
+            
+            self.do_exec(f"claudemcp {json.dumps(data)}")
+            
+        else:
+            print(f"❌ 未知Claude命令: {action}")
+    
+    def do_gemini(self, args):
+        """Gemini適配器專用命令
+        用法: gemini generate <prompt> [language]
+        用法: gemini optimize <code> [language] [type]
+        用法: gemini complete <text>
+        """
+        if not args.strip():
+            print("❌ 用法: gemini <generate|optimize|complete> [args]")
+            return
+        
+        parts = args.strip().split(maxsplit=1)
+        action = parts[0]
+        
+        if action == "generate":
+            if len(parts) < 2:
+                print("❌ 用法: gemini generate <prompt> [language]")
+                return
+            
+            prompt_parts = parts[1].split()
+            prompt = " ".join(prompt_parts[:-1]) if len(prompt_parts) > 1 else parts[1]
+            language = prompt_parts[-1] if len(prompt_parts) > 1 and prompt_parts[-1] in ["python", "javascript", "java", "cpp", "go"] else "python"
+            
+            data = {
+                "action": "generate_code",
+                "prompt": prompt,
+                "language": language
+            }
+            
+            self.do_exec(f"geminimcp {json.dumps(data)}")
+            
+        elif action == "complete":
+            if len(parts) < 2:
+                print("❌ 用法: gemini complete <text>")
+                return
+            
+            data = {
+                "action": "complete_text",
+                "prompt": parts[1]
+            }
+            
+            self.do_exec(f"geminimcp {json.dumps(data)}")
+            
+        else:
+            print(f"❌ 未知Gemini命令: {action}")
+    
+    def do_supermemory(self, args):
+        """SuperMemory適配器專用命令
+        用法: supermemory store <key> <value>
+        用法: supermemory retrieve <key>
+        用法: supermemory search <query>
+        用法: supermemory delete <key>
+        """
+        if not args.strip():
+            print("❌ 用法: supermemory <store|retrieve|search|delete> [args]")
+            return
+        
+        parts = args.strip().split(maxsplit=1)
+        action = parts[0]
+        
+        if action == "store":
+            if len(parts) < 2:
+                print("❌ 用法: supermemory store <key> <value>")
+                return
+            
+            key_value = parts[1].split(maxsplit=1)
+            if len(key_value) < 2:
+                print("❌ 用法: supermemory store <key> <value>")
+                return
+                
+            key = key_value[0]
+            value = key_value[1]
+            
+            data = {
+                "action": "store",
+                "key": key,
+                "value": value
+            }
+            
+            self.do_exec(f"supermemorymcp {json.dumps(data)}")
+            
+        elif action == "retrieve":
+            if len(parts) < 2:
+                print("❌ 用法: supermemory retrieve <key>")
+                return
+            
+            key = parts[1]
+            
+            data = {
+                "action": "retrieve",
+                "key": key
+            }
+            
+            self.do_exec(f"supermemorymcp {json.dumps(data)}")
+            
+        elif action == "search":
+            if len(parts) < 2:
+                print("❌ 用法: supermemory search <query>")
+                return
+            
+            query = parts[1]
+            
+            data = {
+                "action": "search",
+                "query": query
+            }
+            
+            self.do_exec(f"supermemorymcp {json.dumps(data)}")
+            
+        elif action == "delete":
+            if len(parts) < 2:
+                print("❌ 用法: supermemory delete <key>")
+                return
+            
+            key = parts[1]
+            
+            data = {
+                "action": "delete",
+                "key": key
+            }
+            
+            self.do_exec(f"supermemorymcp {json.dumps(data)}")
+            
+        else:
+            print(f"❌ 未知SuperMemory命令: {action}")
+
+    def do_kilo(self, args):
+        """KiloCode適配器專用命令
+        用法: kilo generate <prompt> [language]
+        用法: kilo optimize <code> [language] [type]
+        用法: kilo explain <code> [language]
+        """
+        if not args.strip():
+            print("❌ 用法: kilo <generate|optimize|explain> [args]")
+            return
+        
+        parts = args.strip().split(maxsplit=1)
+        action = parts[0]
+        
+        if action == "generate":
+            if len(parts) < 2:
+                print("❌ 用法: kilo generate <prompt> [language]")
+                return
+            
+            prompt_parts = parts[1].split()
+            prompt = " ".join(prompt_parts[:-1]) if len(prompt_parts) > 1 else parts[1]
+            language = prompt_parts[-1] if len(prompt_parts) > 1 and prompt_parts[-1] in ["python", "javascript", "java", "cpp", "go"] else "python"
+            
+            data = {
+                "action": "generate_code",
+                "prompt": prompt,
+                "language": language
+            }
+            
+            self.do_exec(f"kilocodemcp {json.dumps(data)}")
+            
+        elif action == "explain":
+            if len(parts) < 2:
+                print("❌ 用法: kilo explain <code> [language]")
+                return
+            
+            code_parts = parts[1].split()
+            code = " ".join(code_parts[:-1]) if len(code_parts) > 1 else parts[1]
+            language = code_parts[-1] if len(code_parts) > 1 and code_parts[-1] in ["python", "javascript", "java", "cpp", "go"] else "python"
+            
+            data = {
+                "action": "explain_code",
+                "code": code,
+                "language": language
+            }
+            
+            self.do_exec(f"kilocodemcp {json.dumps(data)}")
+            
+        else:
+            print(f"❌ 未知KiloCode命令: {action}")
+
     def do_quit(self, args):
         """退出系統"""
         print("👋 再見！")

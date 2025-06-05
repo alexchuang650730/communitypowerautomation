@@ -14,12 +14,11 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 import argparse
 
-# 設置日誌
+# 設置日誌 - 將在PowerAutomationUploader初始化時重新配置
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('upload_log.txt'),
         logging.StreamHandler()
     ]
 )
@@ -35,11 +34,31 @@ class PowerAutomationUploader:
         self.test_dir = self.project_root / "test"
         self.mcptool_dir = self.project_root / "mcptool"
         
+        # 確保docs目錄存在
+        self.docs_dir.mkdir(exist_ok=True)
+        
+        # 重新配置日誌到docs目錄
+        log_file = self.docs_dir / "upload_log.txt"
+        for handler in logging.root.handlers[:]:
+            logging.root.removeHandler(handler)
+        
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler(log_file),
+                logging.StreamHandler()
+            ],
+            force=True
+        )
+        
         # 測試結果
         self.test_results = {}
         self.upload_allowed = False
         
         logger.info(f"PowerAutomation上傳器初始化，項目根目錄: {self.project_root}")
+        logger.info(f"文檔目錄: {self.docs_dir}")
+        logger.info(f"日誌文件: {log_file}")
     
     def generate_directory_structure(self) -> str:
         """生成目錄結構"""
@@ -461,7 +480,8 @@ python tools/smart_upload.py --force --commit-message "緊急修復"
             }
             
             # 保存項目信息
-            info_path = self.project_root / "PROJECT_INFO.json"
+            # 保存到docs目錄
+            info_path = self.docs_dir / "PROJECT_INFO.json"
             with open(info_path, 'w', encoding='utf-8') as f:
                 json.dump(project_info, f, indent=2, ensure_ascii=False)
             

@@ -5,7 +5,7 @@
 ## 📊 系統狀態
 
 - **測試狀態**: 🔴 測試失敗
-- **最後更新**: 2025-06-05 08:03:17
+- **最後更新**: 2025-06-05 08:06:59
 - **MCP適配器**: 14個已發現
 - **測試覆蓋**: 單元測試、集成測試、GAIA基準測試
 
@@ -64,6 +64,9 @@ PowerAutomation/
 │   │   ├── ppt_service.py
 │   │   └── web_service.py
 │   └── main.py
+├── docs
+│   ├── PROJECT_INFO.json
+│   └── upload_log.txt
 ├── frontend
 │   ├── public
 │   │   └── index.html
@@ -225,11 +228,10 @@ PowerAutomation/
 │   ├── unit_test_coverage_continuous_improvement_report.md
 │   └── unit_test_coverage_final_report.md
 ├── tools
-│   └── smart_upload.py
 ├── README.md
 ├── requirements.txt
 ├── run_backend.py
-└── upload_log.txt
+└── smart_upload.py
 ```
 
 ## 📝 主要文件說明
@@ -364,4 +366,4 @@ python tools/smart_upload.py --force --commit-message "緊急修復"
 
 ---
 
-*最後更新: 2025-06-05 08:03:17 | 自動生成 by PowerAutomation智能上傳系統*
+*最後更新: 2025-06-05 08:06:59 | 自動生成 by PowerAutomation智能上傳系統*

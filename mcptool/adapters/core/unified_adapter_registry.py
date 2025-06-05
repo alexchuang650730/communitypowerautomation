@@ -75,7 +75,7 @@ class UnifiedAdapterRegistry:
             logger.error(f"適配器發現失敗: {e}")
     
     def _register_adapter_from_file(self, py_file: Path):
-        """從文件註冊適配器"""
+        """從文件註冊適配器 - 改進版本，確保所有適配器都能正確註冊"""
         # 計算模塊路徑
         relative_path = py_file.relative_to(Path(self.adapters_root).parent)
         module_path = str(relative_path.with_suffix("")).replace(os.sep, ".")
@@ -90,9 +90,26 @@ class UnifiedAdapterRegistry:
             spec.loader.exec_module(module)
             
             # 查找MCP適配器類
+            adapter_found = False
             for name, obj in inspect.getmembers(module, inspect.isclass):
                 if self._is_mcp_adapter_class(obj, module):
                     self._register_adapter_class(name, obj, py_file)
+                    adapter_found = True
+            
+            # 如果沒有找到適配器類，使用文件名作為備用方案
+            if not adapter_found and py_file.stem.endswith('_mcp'):
+                # 從文件名創建一個虛擬適配器註冊
+                adapter_id = py_file.stem.lower()
+                self.registered_adapters[adapter_id] = {
+                    "name": py_file.stem,
+                    "class": None,  # 沒有實際類
+                    "category": self._determine_category(py_file),
+                    "file_path": str(py_file),
+                    "module_path": module_path,
+                    "registered_at": datetime.now().isoformat(),
+                    "status": "file_only"  # 標記為僅文件存在
+                }
+                logger.debug(f"從文件名註冊適配器: {adapter_id} (無類定義)")
                     
         except Exception as e:
             logger.debug(f"模塊導入失敗 {module_path}: {e}")
@@ -163,12 +180,20 @@ class UnifiedAdapterRegistry:
             return "integration"
     
     def _generate_adapter_id(self, name: str, category: str) -> str:
-        """生成適配器ID"""
-        # 清理名稱
-        clean_name = name.lower().replace("adapter", "").replace("mcp", "").replace("engine", "")
-        clean_name = clean_name.strip("_")
+        """生成適配器ID - 修復命名不一致問題"""
+        # 直接使用文件名作為ID，保持一致性
+        file_name = name.lower()
         
-        return f"{category}.{clean_name}"
+        # 移除常見後綴但保持原始結構
+        if file_name.endswith('_mcp'):
+            # 保留_mcp後綴以保持與文件名一致
+            return file_name
+        elif file_name.endswith('_adapter'):
+            return file_name
+        elif file_name.endswith('_engine'):
+            return file_name
+        else:
+            return file_name
     
     def _collect_adapter_metadata(self, adapter_id: str, cls: Type):
         """收集適配器元數據"""

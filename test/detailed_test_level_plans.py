@@ -109,6 +109,9 @@ class TestLevelManager:
         
         # 10. 自動化測試層級
         self.test_suites[10] = self._create_automation_test_suite()
+        
+        # 11. MCP完整性測試層級 (新增)
+        self.test_suites[11] = self._create_mcp_integrity_test_suite()
     
     def _create_unit_test_suite(self) -> TestSuite:
         """創建單元測試套件"""

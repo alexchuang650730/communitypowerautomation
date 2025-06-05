@@ -31,8 +31,8 @@ class GAIADatasetProcessor:
         self.data_dir = Path(data_dir)
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
-        # Hugging Face token
-        self.hf_token = "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"
+        # Hugging Face token - 使用環境變量
+        self.hf_token = os.getenv('HUGGINGFACE_TOKEN', '')
         
         logger.info(f"GAIA數據集處理器初始化完成，數據目錄: {self.data_dir}")
     

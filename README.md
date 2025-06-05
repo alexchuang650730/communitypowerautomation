@@ -5,7 +5,7 @@
 ## 📊 系統狀態
 
 - **測試狀態**: 🟢 全部通過
-- **最後更新**: 2025-06-05 08:15:06
+- **最後更新**: 2025-06-05 11:25:47
 - **MCP適配器**: 17個已發現
 - **測試覆蓋**: 十層級測試系統 (10個套件, 33個用例)
 
@@ -64,11 +64,60 @@ PowerAutomation/
 │   │   ├── ppt_service.py
 │   │   └── web_service.py
 │   └── main.py
+├── ci_cd
+│   ├── logs
+│   │   ├── ci_cd.log
+│   │   └── quick_check.log
+│   ├── notifications
+│   │   └── notification_20250605_110156.json
+│   ├── reports
+│   │   └── quick_report_20250605_110156.md
+│   ├── results
+│   │   └── quick_check_20250605_110156.json
+│   ├── automated_quality_checker.py
+│   ├── config.json
+│   ├── README.md
+│   └── run_checks.sh
+├── data
+│   └── learning_feedback
+│       ├── execution_records.jsonl
+│       ├── success_patterns.json
+│       └── tool_weights.json
 ├── docs
+│   ├── api
+│   ├── architecture
+│   │   └── system-overview.md
+│   ├── deployment
+│   ├── development
+│   ├── guides
+│   ├── testing
+│   │   └── ten-layer-system.md
+│   ├── MCP適配器完整性測試報告.md
+│   ├── PowerAutomation_vs_Manus_Updated_Feasibility_Report_2025_06.md
 │   ├── PROJECT_INFO.json
+│   ├── README.md
 │   ├── upload_log.txt
 │   ├── 十個層級測試方案報告.md
+│   ├── 智能兜底機制v2優化報告.md
 │   └── 項目完成總結報告.md
+├── enhanced_gaia_system
+│   ├── __pycache__
+│   ├── gaia_data
+│   │   ├── 2023
+│   │   ├── GAIA.py
+│   │   ├── gaia_level_1_test_data.json
+│   │   └── README.md
+│   ├── gaia_dataset_processor.py
+│   ├── gaia_test_system_v2.py
+│   ├── gaia_test_v2_results_1749133755.json
+│   ├── integrated_gaia_test_v4.py
+│   ├── integrated_gaia_v4_results_1749135387.json
+│   ├── integrated_gaia_v4_results_1749135716.json
+│   ├── large_scale_gaia_results_1749133988.json
+│   ├── large_scale_gaia_tester.py
+│   ├── real_gaia_test_results_1749130618.json
+│   ├── real_gaia_tester.py
+│   └── 智能兜底機制v2優化報告.md
 ├── frontend
 │   ├── public
 │   │   └── index.html
@@ -86,7 +135,6 @@ PowerAutomation/
 │   │   ├── e2e
 │   │   ├── report
 │   │   └── visual
-│   ├── 1
 │   ├── index.html
 │   ├── package-lock.json
 │   ├── package.json
@@ -114,6 +162,7 @@ PowerAutomation/
 │   │   ├── manus
 │   │   ├── rl_srt
 │   │   ├── sequential_thinking_adapter
+│   │   ├── supermemory_adapter
 │   │   ├── unified_config_manager
 │   │   ├── unified_smart_tool_engine
 │   │   ├── workflow
@@ -123,23 +172,35 @@ PowerAutomation/
 │   │   ├── ai_coordination_hub.py
 │   │   ├── ai_enhanced_intent_understanding_mcp.py.backup
 │   │   ├── api_config_manager.py.backup
+│   │   ├── arxiv_integration.py
 │   │   ├── base_mcp.py
+│   │   ├── enhanced_fallback_v3.py
 │   │   ├── enhanced_mcp_brainstorm.py
 │   │   ├── enhanced_mcp_planner.py
+│   │   ├── enhanced_search_strategy_v4.py
+│   │   ├── enhanced_tool_selector_v3.py
+│   │   ├── enhanced_tool_selector_v4.py
 │   │   ├── error_handler.py
 │   │   ├── fixed_api_manager.py.backup
 │   │   ├── infinite_context_adapter_mcp.py
 │   │   ├── intelligent_intent_processor.py
+│   │   ├── intelligent_tool_selector.py
 │   │   ├── intelligent_workflow_engine_mcp.py
+│   │   ├── intent_understanding_tester.py
+│   │   ├── learning_feedback_system.py
 │   │   ├── multi_adapter_synthesizer.py
 │   │   ├── playwright_adapter.py
 │   │   ├── release_discovery_mcp.py
 │   │   ├── sequential_thinking_adapter.py
+│   │   ├── smart_fallback_system_v2.py
 │   │   ├── thought_action_recorder_mcp.py
+│   │   ├── tool_classification_system.py
 │   │   ├── unified_smart_tool_engine_mcp.py
 │   │   └── webagent_adapter.py
 │   ├── cli
+│   │   ├── __pycache__
 │   │   ├── enhanced_mcp_cli.py
+│   │   ├── mcp_core_cli.py
 │   │   ├── rollback_cli.py
 │   │   └── unified_mcp_cli.py
 │   ├── cli_testing
@@ -203,15 +264,19 @@ PowerAutomation/
 │   ├── performance
 │   │   └── load_testing.py
 │   ├── results
+│   │   ├── demo_ten_layer_results.json
 │   │   ├── gaia_level_1_cli_results_20250605_063356.json
 │   │   ├── gaia_level_1_cli_results_20250605_063412.json
 │   │   ├── gaia_level_1_cli_results_20250605_063837.json
+│   │   ├── ten_layer_test_results_20250605_111412.json
+│   │   ├── ten_layer_test_results_latest.json
 │   │   ├── test_plan.json
 │   │   ├── test_report_execution_1749123239.json
 │   │   ├── test_report_execution_1749123387.json
 │   │   ├── test_report_execution_1749125244.json
 │   │   ├── test_report_execution_1749125254.json
-│   │   └── test_report_execution_1749125269.json
+│   │   ├── test_report_execution_1749125269.json
+│   │   └── test_report_execution_1749125727.json
 │   ├── unit
 │   │   ├── adapters
 │   │   ├── config
@@ -225,18 +290,23 @@ PowerAutomation/
 │   ├── detailed_test_level_plans.py
 │   ├── dynamic_adapter_discovery.py
 │   ├── gaia.py
+│   ├── mcp_integrity_test.py
 │   ├── README.md
+│   ├── ten_layer_test_executor.py
 │   ├── test_execution_engine.py
 │   ├── unified_test_cli.py
 │   ├── unified_test_manager.py
 │   ├── unit_test_coverage_continuous_fix_final_report.md
 │   ├── unit_test_coverage_continuous_improvement_report.md
-│   └── unit_test_coverage_final_report.md
+│   ├── unit_test_coverage_final_report.md
+│   └── 十層級測試項目報告.md
 ├── tools
 ├── README.md
 ├── requirements.txt
 ├── run_backend.py
-└── smart_upload.py
+├── setup_real_api_keys.sh
+├── smart_upload.py
+└── UPLOAD_GUIDE.md
 ```
 
 ## 📝 主要文件說明
@@ -371,4 +441,4 @@ python tools/smart_upload.py --force --commit-message "緊急修復"
 
 ---
 
-*最後更新: 2025-06-05 08:15:06 | 自動生成 by PowerAutomation智能上傳系統*
+*最後更新: 2025-06-05 11:25:47 | 自動生成 by PowerAutomation智能上傳系統*

@@ -1,0 +1,228 @@
+name: PowerAutomation Performance Benchmark
+
+on:
+  schedule:
+    - cron: '0 4 * * 0'  # 每週日早上4點
+  workflow_dispatch:
+    inputs:
+      benchmark_type:
+        description: '基準測試類型'
+        required: true
+        default: 'standard'
+        type: choice
+        options:
+        - standard
+        - stress
+        - comparison
+
+jobs:
+  performance-benchmark:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 檢出代碼
+      uses: actions/checkout@v4
+    
+    - name: 設置Python環境
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: 安裝依賴
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest-benchmark memory-profiler psutil
+        if [ -f requirements.txt ]; then
+          pip install -r requirements.txt
+        fi
+    
+    - name: 運行性能基準測試
+      run: |
+        echo "運行性能基準測試..."
+        
+        # 創建基準測試腳本
+        cat > benchmark_test.py << 'EOF'
+        import time
+        import psutil
+        import json
+        from datetime import datetime
+        import sys
+        import os
+        
+        # 添加項目路徑
+        sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+        
+        def benchmark_tool_selection():
+            """基準測試工具選擇性能"""
+            start_time = time.time()
+            start_memory = psutil.Process().memory_info().rss / 1024 / 1024
+            
+            try:
+                from mcptool.adapters.enhanced_tool_selector_v4 import EnhancedToolSelectorV4
+                selector = EnhancedToolSelectorV4()
+                
+                # 測試100次工具選擇
+                for i in range(100):
+                    question = f"Test question {i} for performance measurement"
+                    result = selector.select_tools(question)
+                
+                end_time = time.time()
+                end_memory = psutil.Process().memory_info().rss / 1024 / 1024
+                
+                return {
+                    "test": "tool_selection",
+                    "iterations": 100,
+                    "total_time": end_time - start_time,
+                    "avg_time_per_iteration": (end_time - start_time) / 100,
+                    "memory_usage_mb": end_memory - start_memory,
+                    "success": True
+                }
+            except Exception as e:
+                return {
+                    "test": "tool_selection",
+                    "error": str(e),
+                    "success": False
+                }
+        
+        def benchmark_fallback_system():
+            """基準測試兜底系統性能"""
+            start_time = time.time()
+            start_memory = psutil.Process().memory_info().rss / 1024 / 1024
+            
+            try:
+                from mcptool.adapters.enhanced_fallback_v3 import EnhancedFallbackSystemV3
+                fallback = EnhancedFallbackSystemV3()
+                
+                # 測試50次兜底執行
+                for i in range(50):
+                    question = f"Fallback test question {i}"
+                    result = fallback.execute_enhanced_fallback(question)
+                
+                end_time = time.time()
+                end_memory = psutil.Process().memory_info().rss / 1024 / 1024
+                
+                return {
+                    "test": "fallback_system",
+                    "iterations": 50,
+                    "total_time": end_time - start_time,
+                    "avg_time_per_iteration": (end_time - start_time) / 50,
+                    "memory_usage_mb": end_memory - start_memory,
+                    "success": True
+                }
+            except Exception as e:
+                return {
+                    "test": "fallback_system",
+                    "error": str(e),
+                    "success": False
+                }
+        
+        def main():
+            print("開始性能基準測試...")
+            
+            results = {
+                "timestamp": datetime.now().isoformat(),
+                "system_info": {
+                    "cpu_count": psutil.cpu_count(),
+                    "memory_total_gb": psutil.virtual_memory().total / 1024 / 1024 / 1024,
+                    "python_version": sys.version
+                },
+                "benchmarks": []
+            }
+            
+            # 運行基準測試
+            results["benchmarks"].append(benchmark_tool_selection())
+            results["benchmarks"].append(benchmark_fallback_system())
+            
+            # 保存結果
+            with open("benchmark_results.json", "w") as f:
+                json.dump(results, f, indent=2)
+            
+            # 打印結果
+            print("基準測試完成!")
+            for benchmark in results["benchmarks"]:
+                if benchmark["success"]:
+                    print(f"測試: {benchmark['test']}")
+                    print(f"  迭代次數: {benchmark['iterations']}")
+                    print(f"  總時間: {benchmark['total_time']:.3f}秒")
+                    print(f"  平均時間: {benchmark['avg_time_per_iteration']:.6f}秒")
+                    print(f"  內存使用: {benchmark['memory_usage_mb']:.2f}MB")
+                else:
+                    print(f"測試失敗: {benchmark['test']} - {benchmark.get('error', 'Unknown error')}")
+        
+        if __name__ == "__main__":
+            main()
+        EOF
+        
+        # 運行基準測試
+        python benchmark_test.py
+    
+    - name: 分析性能結果
+      run: |
+        echo "分析性能結果..."
+        
+        if [ -f benchmark_results.json ]; then
+          echo "基準測試結果:"
+          cat benchmark_results.json
+          
+          # 檢查性能是否在可接受範圍內
+          python -c "
+        import json
+        
+        with open('benchmark_results.json', 'r') as f:
+            results = json.load(f)
+        
+        # 性能閾值
+        thresholds = {
+            'tool_selection_max_avg_time': 0.01,  # 10ms
+            'fallback_system_max_avg_time': 0.05,  # 50ms
+            'max_memory_usage': 100  # 100MB
+        }
+        
+        issues = []
+        
+        for benchmark in results['benchmarks']:
+            if not benchmark['success']:
+                issues.append(f'{benchmark[\"test\"]} 測試失敗')
+                continue
+                
+            test_name = benchmark['test']
+            avg_time = benchmark['avg_time_per_iteration']
+            memory_usage = benchmark['memory_usage_mb']
+            
+            if test_name == 'tool_selection' and avg_time > thresholds['tool_selection_max_avg_time']:
+                issues.append(f'工具選擇性能過慢: {avg_time:.6f}s > {thresholds[\"tool_selection_max_avg_time\"]}s')
+            
+            if test_name == 'fallback_system' and avg_time > thresholds['fallback_system_max_avg_time']:
+                issues.append(f'兜底系統性能過慢: {avg_time:.6f}s > {thresholds[\"fallback_system_max_avg_time\"]}s')
+            
+            if memory_usage > thresholds['max_memory_usage']:
+                issues.append(f'{test_name} 內存使用過高: {memory_usage:.2f}MB > {thresholds[\"max_memory_usage\"]}MB')
+        
+        if issues:
+            print('性能問題:')
+            for issue in issues:
+                print(f'  - {issue}')
+            exit(1)
+        else:
+            print('✅ 所有性能指標正常')
+          "
+        else
+          echo "❌ 基準測試結果文件不存在"
+          exit 1
+        fi
+    
+    - name: 上傳基準測試結果
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: benchmark-results
+        path: |
+          benchmark_results.json
+        retention-days: 90
+    
+    - name: 更新性能趨勢
+      run: |
+        echo "更新性能趨勢數據..."
+        # 這裡可以將結果發送到監控系統
+        # 例如：InfluxDB、Prometheus等
+

@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-06-05T11:01:56.025607",
+  "test_type": "quick",
+  "passed": true,
+  "metrics": {
+    "success_rate": 100.0,
+    "fallback_success_rate": 100.0,
+    "average_confidence": 85.0,
+    "execution_time": 0.00027680397033691406,
+    "tool_distribution": {
+      "webagent": 21,
+      "gemini": 7,
+      "claude": 12,
+      "sequential_thinking": 8,
+      "ai_analysis_engine": 1,
+      "workflow_automation_hub": 1
+    },
+    "type_coverage": {
+      "academic_paper": 100.0,
+      "automation": 100.0,
+      "simple_qa": 100.0,
+      "complex_analysis": 100.0,
+      "calculation": 100.0,
+      "factual_search": 100.0
+    }
+  },
+  "issues": [],
+  "recommendations": [],
+  "quality_gate": {
+    "min_success_rate": 90.0,
+    "min_fallback_success_rate": 75.0,
+    "min_average_confidence": 80.0,
+    "max_execution_time": 300.0,
+    "required_tool_coverage": 5,
+    "required_type_coverage": 95.0
+  }
+}

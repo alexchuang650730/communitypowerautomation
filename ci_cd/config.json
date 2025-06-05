@@ -1,0 +1,36 @@
+{
+  "quality_gate": {
+    "min_success_rate": 90.0,
+    "min_fallback_success_rate": 75.0,
+    "min_average_confidence": 80.0,
+    "max_execution_time": 300.0,
+    "required_tool_coverage": 5,
+    "required_type_coverage": 95.0
+  },
+  "test_settings": {
+    "sample_size": 50,
+    "full_test_size": 165,
+    "timeout": 600
+  },
+  "alerts_enabled": true,
+  "report_retention_days": 30,
+  "notification": {
+    "email": {
+      "enabled": false,
+      "recipients": ["admin@example.com"]
+    },
+    "slack": {
+      "enabled": false,
+      "webhook_url": ""
+    },
+    "webhook": {
+      "enabled": false,
+      "url": ""
+    }
+  },
+  "schedule": {
+    "quick_check_interval": "*/30 * * * *",
+    "full_check_interval": "0 2 * * *"
+  }
+}
+

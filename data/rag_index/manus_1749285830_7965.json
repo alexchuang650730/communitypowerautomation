@@ -1,0 +1,12 @@
+{
+  "id": "manus_1749285830_7965",
+  "content": "{\"input\": \"創建一個Python函數\", \"output\": \"def hello(): return 'Hello World'\", \"context\": {\"file_path\": \"test.py\", \"line\": 1}}",
+  "metadata": {
+    "plugin_name": "manus",
+    "collection_time": "2025-06-07T04:43:50.120149",
+    "environment": "sandbox"
+  },
+  "timestamp": "2025-06-07T04:43:50.120179",
+  "source": "manus_plugin",
+  "layer": "interaction"
+}

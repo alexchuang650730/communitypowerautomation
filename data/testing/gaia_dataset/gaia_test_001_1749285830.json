@@ -1,0 +1,26 @@
+{
+  "id": "gaia_test_001_1749285830",
+  "timestamp": "2025-06-07T04:43:50.120218",
+  "source": "gaia_dataset",
+  "layer": "testing",
+  "content": {
+    "gaia_entry": {
+      "task_id": "test_001",
+      "Level": "1",
+      "Question": "What is 2+2?",
+      "Final answer": "4"
+    },
+    "test_results": {
+      "accuracy": 1.0,
+      "response_time": 0.5
+    },
+    "test_type": "gaia_benchmark"
+  },
+  "metadata": {
+    "dataset": "GAIA",
+    "test_category": "1",
+    "question_id": "test_001",
+    "collection_time": "2025-06-07T04:43:50.120215"
+  },
+  "size_bytes": 190
+}

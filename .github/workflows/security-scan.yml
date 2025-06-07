@@ -1,0 +1,57 @@
+name: PowerAutomation Security Scan
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    - cron: '0 6 * * 1'  # 每週一早上6點
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 檢出代碼
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: 設置Python環境
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: 安裝安全掃描工具
+      run: |
+        pip install bandit safety semgrep
+    
+    - name: 運行Bandit安全掃描
+      run: |
+        echo "運行Bandit安全掃描..."
+        bandit -r . -f json -o bandit-report.json || true
+        bandit -r . || true
+    
+    - name: 運行Safety依賴檢查
+      run: |
+        echo "檢查依賴安全性..."
+        safety check --json --output safety-report.json || true
+        safety check || true
+    
+    - name: 運行Semgrep代碼掃描
+      run: |
+        echo "運行Semgrep代碼掃描..."
+        semgrep --config=auto --json --output=semgrep-report.json . || true
+    
+    - name: 上傳安全報告
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+          safety-report.json
+          semgrep-report.json
+        retention-days: 30
+

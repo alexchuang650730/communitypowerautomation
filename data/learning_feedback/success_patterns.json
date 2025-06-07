@@ -1,0 +1,76 @@
+{
+  "gemini_0": {
+    "total_count": 5,
+    "success_count": 2,
+    "success_rate": 0.4,
+    "avg_score": 0.36,
+    "question_features": {
+      "length": {
+        "short": 5
+      },
+      "has_search_keywords": {
+        "no": 5
+      },
+      "has_calculation": {
+        "no": 5
+      },
+      "has_analysis": {
+        "no": 5
+      },
+      "language": {
+        "chinese": 5
+      }
+    },
+    "best_combinations": []
+  },
+  "webagent_1": {
+    "total_count": 2,
+    "success_count": 2,
+    "success_rate": 1.0,
+    "avg_score": 0.8,
+    "question_features": {
+      "length": {
+        "short": 2
+      },
+      "has_search_keywords": {
+        "no": 1,
+        "yes": 1
+      },
+      "has_calculation": {
+        "no": 1,
+        "yes": 1
+      },
+      "has_analysis": {
+        "no": 2
+      },
+      "language": {
+        "chinese": 2
+      }
+    },
+    "best_combinations": []
+  },
+  "sequential_thinking_1": {
+    "total_count": 1,
+    "success_count": 0,
+    "success_rate": 0.0,
+    "avg_score": 0.2,
+    "question_features": {
+      "length": {
+        "short": 1
+      },
+      "has_search_keywords": {
+        "no": 1
+      },
+      "has_calculation": {
+        "no": 1
+      },
+      "has_analysis": {
+        "yes": 1
+      },
+      "language": {
+        "chinese": 1
+      }
+    },
+    "best_combinations": []
+  }
+}

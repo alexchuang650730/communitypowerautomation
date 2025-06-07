@@ -1,0 +1,17 @@
+{
+  "github": {
+    "enabled": true,
+    "repo": "alexchuang650730/Powerauto.ai",
+    "auto_push": true
+  },
+  "supermemory": {
+    "enabled": true,
+    "api_key": null,
+    "workspace_id": "default"
+  },
+  "rag": {
+    "enabled": true,
+    "index_path": "/home/ubuntu/projects/communitypowerautomation/data/rag_index",
+    "embedding_model": "text-embedding-ada-002"
+  }
+}

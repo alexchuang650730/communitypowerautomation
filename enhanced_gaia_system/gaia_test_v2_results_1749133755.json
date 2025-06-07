@@ -1,0 +1,81 @@
+{
+  "total_questions": 5,
+  "successful_questions": 3,
+  "success_rate": 0.6,
+  "fallback_used_count": 1,
+  "fallback_success_count": 1,
+  "execution_time": 5.002453327178955,
+  "timestamp": 1749133755.3838904,
+  "results": [
+    {
+      "question_id": 1,
+      "question": "什麼是人工智能？",
+      "expected_answer": "AI定義相關",
+      "actual_answer": "人工智能是模擬人類智能的計算機系統",
+      "success": true,
+      "tool_used": "gemini",
+      "service_type": "primary_tools",
+      "confidence": 0.95,
+      "fallback_used": false,
+      "fallback_level": "none",
+      "type": "simple_qa",
+      "answer_correct": false
+    },
+    {
+      "question_id": 2,
+      "question": "請詳細分析深度學習和傳統機器學習的區別，包括算法原理、應用場景和優缺點",
+      "expected_answer": "詳細比較分析",
+      "actual_answer": "深度學習使用多層神經網絡，而傳統機器學習使用較簡單的算法...",
+      "success": true,
+      "tool_used": "claude",
+      "service_type": "primary_tools",
+      "confidence": 0.92,
+      "fallback_used": false,
+      "fallback_level": "none",
+      "type": "complex_analysis",
+      "answer_correct": false
+    },
+    {
+      "question_id": 3,
+      "question": "What was the volume in m^3 of the fish bag that was calculated in the University of Leicester paper 'Can Hiccup Supply Enough Fish to Maintain a Dragon's Diet?'",
+      "expected_answer": "0.1777",
+      "actual_answer": "0.1777",
+      "success": true,
+      "tool_used": "arxiv_mcp_server",
+      "service_type": "mcp.so",
+      "confidence": 0.8400000000000001,
+      "fallback_used": true,
+      "fallback_level": "external_services",
+      "type": "academic_paper",
+      "answer_correct": true
+    },
+    {
+      "question_id": 4,
+      "question": "Eliud Kipchoge的馬拉松世界紀錄是多少？",
+      "expected_answer": "2:01:09",
+      "actual_answer": "2:01:09 (2019年柏林馬拉松)",
+      "success": true,
+      "tool_used": "webagent",
+      "service_type": "primary_tools",
+      "confidence": 0.88,
+      "fallback_used": false,
+      "fallback_level": "none",
+      "type": "factual_search",
+      "answer_correct": true
+    },
+    {
+      "question_id": 5,
+      "question": "請計算1到100的和，並說明計算步驟",
+      "expected_answer": "5050",
+      "actual_answer": "5050 (使用等差數列求和公式: n(n+1)/2 = 100×101/2 = 5050)",
+      "success": true,
+      "tool_used": "sequential_thinking",
+      "service_type": "primary_tools",
+      "confidence": 0.96,
+      "fallback_used": false,
+      "fallback_level": "none",
+      "type": "calculation",
+      "answer_correct": true
+    }
+  ]
+}

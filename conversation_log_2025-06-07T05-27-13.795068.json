@@ -1,0 +1,24 @@
+[
+  {
+    "type": "user_input",
+    "text": "這是一個測試用戶輸入",
+    "length": 10,
+    "timestamp": "2025-06-07T05:27:13.794400",
+    "status": "NORMAL"
+  },
+  {
+    "type": "assistant_output",
+    "text": "這是一個測試助手回覆，包含更多的文字內容來測試字符計數功能",
+    "length": 29,
+    "timestamp": "2025-06-07T05:27:13.794755",
+    "status": "NORMAL"
+  },
+  {
+    "type": "file_operation",
+    "operation": "read",
+    "file_path": "test.txt",
+    "size": 1000,
+    "timestamp": "2025-06-07T05:27:13.795022",
+    "status": "NORMAL"
+  }
+]

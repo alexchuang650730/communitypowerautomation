@@ -195,6 +195,10 @@ class SmartContextMonitor:
             return "CAUTION"
         else:
             return "NORMAL"
+    
+    def get_timestamp(self):
+        """獲取當前時間戳"""
+        return datetime.now().isoformat()
 
 # 全局監控實例
 monitor = SmartContextMonitor()

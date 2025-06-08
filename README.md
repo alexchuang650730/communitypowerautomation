@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 # PowerAutomation
 
-> 統一AI自動化平台 - MCP適配器系統
+> AI原生的企業級自動化平台 - MCP適配器系統
 
 ## 📊 系統狀態
 
@@ -11,7 +11,7 @@
 
 ## 🎯 項目概述
 
-PowerAutomation是一個統一的AI自動化平台，基於MCP（Model Context Protocol）標準，提供：
+PowerAutomation是一個AI原生的企業級自動化平台，基於MCP（Model Context Protocol）標準，提供：
 
 - 🔧 **統一MCP適配器系統** - 標準化的AI服務接口
 - 💻 **完整CLI控制系統** - 命令行管理和測試工具

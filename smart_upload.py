@@ -500,7 +500,7 @@ python tools/smart_upload.py --force --commit-message "緊急修復"
             project_info = {
                 "name": "PowerAutomation",
                 "version": "1.0.0",
-                "description": "統一AI自動化平台 - MCP適配器系統",
+                "description": "AI原生的企業級自動化平台 - MCP適配器系統",
                 "last_updated": datetime.now().isoformat(),
                 "directory_structure": self.generate_directory_structure(),
                 "file_descriptions": self.generate_file_descriptions(),

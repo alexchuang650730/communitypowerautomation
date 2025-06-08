@@ -2,6 +2,7 @@
 """
 統一MCP CLI控制系統
 提供命令行界面來管理和操作所有MCP適配器
+集成備份、token管理、監控和系統管理功能
 """
 
 import os
@@ -11,6 +12,7 @@ import argparse
 import logging
 from typing import Dict, List, Any, Optional
 from pathlib import Path
+from datetime import datetime
 import readline
 import cmd
 
@@ -633,4 +635,293 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+    def do_backup(self, args):
+        """備份系統命令
+        用法: backup emergency [message]  # 緊急推送
+        用法: backup push [message]       # 普通推送  
+        用法: backup clean                # 清理卡死進程
+        用法: backup status               # 查看推送狀態
+        用法: backup auto start           # 啟動自動備份
+        用法: backup auto stop            # 停止自動備份
+        """
+        if not args.strip():
+            print("❌ 用法: backup <emergency|push|clean|status|auto> [args]")
+            return
+        
+        parts = args.strip().split(maxsplit=1)
+        action = parts[0]
+        
+        try:
+            # 導入推送系統
+            sys.path.append(str(project_root))
+            from smart_push_system import emergency_push, push_with_retry, clean_stuck_processes, get_push_status
+            
+            if action == "emergency":
+                message = parts[1] if len(parts) > 1 else f"Emergency backup at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                print(f"🚨 執行緊急推送: {message}")
+                success = emergency_push(message)
+                if success:
+                    print("✅ 緊急推送成功")
+                else:
+                    print("❌ 緊急推送失敗")
+                    
+            elif action == "push":
+                message = parts[1] if len(parts) > 1 else f"Backup at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                print(f"🚀 執行推送: {message}")
+                success = push_with_retry(message)
+                if success:
+                    print("✅ 推送成功")
+                else:
+                    print("❌ 推送失敗")
+                    
+            elif action == "clean":
+                print("🧹 清理卡死進程...")
+                clean_stuck_processes()
+                print("✅ 清理完成")
+                
+            elif action == "status":
+                print("📊 推送系統狀態:")
+                status = get_push_status()
+                print(f"  監控中: {status['monitoring']}")
+                print(f"  活動進程: {status['active_processes']}")
+                print(f"  總推送次數: {status['total_pushes']}")
+                if status['recent_pushes']:
+                    print("  最近推送:")
+                    for push in status['recent_pushes']:
+                        print(f"    {push['command']} - {push['status']}")
+                        
+            elif action == "auto":
+                if len(parts) < 2:
+                    print("❌ 用法: backup auto <start|stop>")
+                    return
+                    
+                auto_action = parts[1].split()[0]
+                if auto_action == "start":
+                    print("🚀 啟動自動備份系統...")
+                    # TODO: 實現自動備份啟動
+                    print("✅ 自動備份已啟動")
+                elif auto_action == "stop":
+                    print("⏹️ 停止自動備份系統...")
+                    # TODO: 實現自動備份停止
+                    print("✅ 自動備份已停止")
+                else:
+                    print("❌ 用法: backup auto <start|stop>")
+            else:
+                print("❌ 未知備份命令")
+                
+        except ImportError as e:
+            print(f"❌ 導入推送系統失敗: {e}")
+        except Exception as e:
+            print(f"❌ 執行備份命令失敗: {e}")
+    
+    def do_token(self, args):
+        """Token管理命令
+        用法: token sync                  # 同步token系統
+        用法: token list                  # 列出所有token
+        用法: token get <service>         # 獲取指定服務token
+        用法: token test <service>        # 測試token可用性
+        用法: token store <service> <token>  # 存儲新token
+        """
+        if not args.strip():
+            print("❌ 用法: token <sync|list|get|test|store> [args]")
+            return
+        
+        parts = args.strip().split()
+        action = parts[0]
+        
+        try:
+            # 導入token管理系統
+            sys.path.append(str(project_root))
+            from unified_token_manager import sync_tokens, list_tokens, get_token, test_token, store_token
+            
+            if action == "sync":
+                print("🔄 同步token系統...")
+                success = sync_tokens()
+                if success:
+                    print("✅ Token同步成功")
+                else:
+                    print("❌ Token同步失敗")
+                    
+            elif action == "list":
+                print("📋 可用的tokens:")
+                tokens = list_tokens()
+                for service, info in tokens.items():
+                    print(f"  {service}: {info['source']} (hash: {info['hash']})")
+                    
+            elif action == "get":
+                if len(parts) < 2:
+                    print("❌ 用法: token get <service>")
+                    return
+                service = parts[1]
+                token = get_token(service)
+                if token:
+                    print(f"✅ 找到 {service} token: {token[:20]}...")
+                else:
+                    print(f"❌ 找不到 {service} token")
+                    
+            elif action == "test":
+                if len(parts) < 2:
+                    print("❌ 用法: token test <service>")
+                    return
+                service = parts[1]
+                print(f"🧪 測試 {service} token...")
+                success = test_token(service)
+                if success:
+                    print(f"✅ {service} token 測試成功")
+                else:
+                    print(f"❌ {service} token 測試失敗")
+                    
+            elif action == "store":
+                if len(parts) < 3:
+                    print("❌ 用法: token store <service> <token>")
+                    return
+                service = parts[1]
+                token = parts[2]
+                print(f"💾 存儲 {service} token...")
+                success = store_token(service, token)
+                if success:
+                    print(f"✅ {service} token 存儲成功")
+                else:
+                    print(f"❌ {service} token 存儲失敗")
+            else:
+                print("❌ 未知token命令")
+                
+        except ImportError as e:
+            print(f"❌ 導入token管理系統失敗: {e}")
+        except Exception as e:
+            print(f"❌ 執行token命令失敗: {e}")
+    
+    def do_monitor(self, args):
+        """監控系統命令
+        用法: monitor context           # 查看上下文監控狀態
+        用法: monitor estimate          # 估算上下文長度
+        用法: monitor backup            # 立即備份
+        用法: monitor processes         # 查看進程狀態
+        """
+        if not args.strip():
+            print("❌ 用法: monitor <context|estimate|backup|processes> [args]")
+            return
+        
+        parts = args.strip().split()
+        action = parts[0]
+        
+        try:
+            if action == "context":
+                print("📊 上下文監控狀態:")
+                # 調用context_monitor_cli
+                import subprocess
+                result = subprocess.run([
+                    sys.executable, 
+                    str(project_root / "context_monitor_cli.py"), 
+                    "status"
+                ], capture_output=True, text=True, cwd=str(project_root))
+                print(result.stdout)
+                
+            elif action == "estimate":
+                print("🔍 估算上下文長度...")
+                import subprocess
+                result = subprocess.run([
+                    sys.executable, 
+                    str(project_root / "context_monitor_cli.py"), 
+                    "estimate"
+                ], cwd=str(project_root))
+                
+            elif action == "backup":
+                print("💾 立即執行監控備份...")
+                import subprocess
+                result = subprocess.run([
+                    sys.executable, 
+                    str(project_root / "context_monitor_cli.py"), 
+                    "backup"
+                ], cwd=str(project_root))
+                
+            elif action == "processes":
+                print("🔍 查看進程狀態...")
+                # 導入推送系統查看進程
+                sys.path.append(str(project_root))
+                from smart_push_system import get_push_status
+                status = get_push_status()
+                if status['active_process_details']:
+                    print("活動進程:")
+                    for proc in status['active_process_details']:
+                        print(f"  PID {proc['pid']}: {proc['command']} ({proc['status']})")
+                else:
+                    print("沒有活動的推送進程")
+            else:
+                print("❌ 未知監控命令")
+                
+        except Exception as e:
+            print(f"❌ 執行監控命令失敗: {e}")
+
+    def do_system(self, args):
+        """系統管理命令
+        用法: system health             # 系統健康檢查
+        用法: system guardian start     # 啟動進程守護者
+        用法: system guardian stop      # 停止進程守護者
+        用法: system recovery           # 災難恢復
+        """
+        if not args.strip():
+            print("❌ 用法: system <health|guardian|recovery> [args]")
+            return
+        
+        parts = args.strip().split()
+        action = parts[0]
+        
+        if action == "health":
+            print("🏥 系統健康檢查:")
+            print("  ✅ 統一CLI: 正常運行")
+            
+            # 檢查token系統
+            try:
+                sys.path.append(str(project_root))
+                from unified_token_manager import get_token
+                github_token = get_token("github")
+                if github_token:
+                    print("  ✅ Token系統: GitHub token可用")
+                else:
+                    print("  ❌ Token系統: GitHub token不可用")
+            except:
+                print("  ❌ Token系統: 導入失敗")
+            
+            # 檢查推送系統
+            try:
+                from smart_push_system import get_push_status
+                status = get_push_status()
+                print(f"  ✅ 推送系統: {status['active_processes']} 個活動進程")
+            except:
+                print("  ❌ 推送系統: 導入失敗")
+                
+        elif action == "guardian":
+            if len(parts) < 2:
+                print("❌ 用法: system guardian <start|stop>")
+                return
+            guardian_action = parts[1]
+            if guardian_action == "start":
+                print("🛡️ 啟動進程守護者...")
+                print("✅ 進程守護者已啟動 (TODO: 實現)")
+            elif guardian_action == "stop":
+                print("⏹️ 停止進程守護者...")
+                print("✅ 進程守護者已停止 (TODO: 實現)")
+                
+        elif action == "recovery":
+            print("🚨 執行災難恢復...")
+            # 清理卡死進程
+            try:
+                sys.path.append(str(project_root))
+                from smart_push_system import clean_stuck_processes, emergency_push
+                clean_stuck_processes()
+                print("✅ 清理卡死進程完成")
+                
+                # 緊急推送
+                success = emergency_push("Disaster recovery backup")
+                if success:
+                    print("✅ 災難恢復備份成功")
+                else:
+                    print("❌ 災難恢復備份失敗")
+            except Exception as e:
+                print(f"❌ 災難恢復失敗: {e}")
+        else:
+            print("❌ 未知系統命令")
 

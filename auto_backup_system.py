@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-自動備份系統實現
+自動備份系統實現 v2.0
 基於四種觸發條件的智能備份機制
+集成統一token管理和智能推送系統
 """
 
 import os
@@ -12,6 +13,10 @@ import json
 from datetime import datetime
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+
+# 導入統一系統
+from unified_token_manager import get_token
+from smart_push_system import push_with_retry, emergency_push
 
 class AutoBackupSystem:
     def __init__(self, project_dir="/home/ubuntu/projects/communitypowerautomation"):
@@ -55,7 +60,7 @@ class AutoBackupSystem:
             json.dump(data, f, indent=2)
     
     def trigger_git_backup(self, reason, trigger_type="manual"):
-        """執行Git備份"""
+        """執行Git備份 - 使用智能推送系統"""
         try:
             os.chdir(self.project_dir)
             
@@ -67,12 +72,33 @@ class AutoBackupSystem:
                 print(f"⏭️ 跳過備份: 沒有變更 ({reason})")
                 return False
             
-            # 執行備份
+            # 使用智能推送系統執行備份
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             commit_msg = f"Auto backup: {reason} [{timestamp}]"
             
-            # Git操作
-            subprocess.run(['git', 'add', '.'], check=True)
+            print(f"🚀 執行智能備份: {commit_msg}")
+            
+            # 使用智能推送系統（帶重試和超時保護）
+            success = push_with_retry(commit_msg)
+            
+            if success:
+                print(f"✅ 備份成功: {reason}")
+                self.backup_stats[f"{trigger_type}_triggered"] += 1
+                self.backup_stats["total_backups"] += 1
+                self.last_backup_time = time.time()
+                self.save_stats()
+                return True
+            else:
+                print(f"❌ 備份失敗: {reason}")
+                # 嘗試緊急推送
+                print("🚨 嘗試緊急推送...")
+                emergency_success = emergency_push(f"Emergency: {commit_msg}")
+                if emergency_success:
+                    print("✅ 緊急推送成功")
+                    return True
+                else:
+                    print("❌ 緊急推送也失敗")
+                    return False
             subprocess.run(['git', 'commit', '-m', commit_msg], check=True)
             subprocess.run(['git', 'push', 'origin', 'main'], check=True)
             
